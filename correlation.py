@@ -8,8 +8,15 @@ def load_journal(journal):
 
 def compute_phi(journal,event):
   data = load_journal(journal)
-  n11 = n00 = n10 = n01 = n1_ = n0_ = n_1 = n_0 = 0
-  for i in data:
+  n11 = 0
+  n00 = 0
+  n10 = 0
+  n01 = 0
+  n1_ = 0
+  n0_ = 0
+  n_1 = 0
+  n_0 = 0
+ for i in data:
     if i['squirrel'] == True:
         n1_ += 1
         if(event in i['events']):
