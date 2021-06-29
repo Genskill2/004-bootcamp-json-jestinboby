@@ -8,7 +8,7 @@ def load_journal(filename):
 	return data
 
 def compute_phi(filename,event):
-	data = load_journal(name)
+	data = load_journal(filename)
 	n11=n00=n10=n01=n1p=n0p=np1=np0=0
 	for i in data:
 		if event in i['events']:
@@ -35,12 +35,12 @@ def compute_correlations(filename):
 	corr_dic = {}
 	for i in data:
 		for event in i['events']:
-			if event not in dic.keys():
+			if event not in corr_dic.keys():
 				corr_dic[event] = compute_phi(filename,event)
 	return corr_dic
 
 def diagnose(filename):
-	dic = compute_correlations(filename)
-	max_value=max(dic, key=dic.get)
-	min_value=min(dic, key=dic.get)
+	corr_dic = compute_correlations(filename)
+	max_value=max(corr_dic, key=corr_dic.get)
+	min_value=min(corr_dic, key=corr_dic.get)
 	return max_value,min_value
