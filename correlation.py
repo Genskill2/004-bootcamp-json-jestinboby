@@ -1,6 +1,5 @@
 import json
-import math
-import sys
+from math import sqrt
 
 def load_journal(journal):
  f = open(journal)
@@ -8,15 +7,9 @@ def load_journal(journal):
  return data
 
 def compute_phi(journal,event):
+  phi = 0
   data = load_journal(journal)
-  var1 = 0
-  var2 = 0
-  var3 = 0
-  var4 = 0
-  var5 = 0
-  var6 = 0
-  var7 = 0
-  var8 = 0
+  var1,var2,var3,var4,var5,var6,var7,var8 = 0,0,0,0,0,0,0,0
   for i in data:
       if event in i['events']:
           var5 += 1
@@ -34,7 +27,8 @@ def compute_phi(journal,event):
           else:
                 var8 += 1
                 var2 += 1
-  return (var1*var2)-(var3*var4)/math.sqrt(var5*var6*var7*var8)
+  phi = (var1*var2)-(var3*var4)/sqrt(var5*var6*var7*var8)
+  return phi
 
 def compute_correlations(journal):
   data = load_journal(journal)
