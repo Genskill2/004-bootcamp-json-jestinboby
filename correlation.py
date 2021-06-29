@@ -7,6 +7,8 @@ def load_journal(journal):
  return data
 
 def compute_phi(journal,event):
+  ref={"n11":"var1","n00":"var2","n10":"var3","n01":"var4","n1+":"var5","n0+":"var6",
+  "n+1":"var7","n+0":"var8"}
   data = load_journal(journal)
   var1 = 0
   var2 = 0
