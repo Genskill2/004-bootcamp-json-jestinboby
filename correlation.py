@@ -34,7 +34,7 @@ def compute_phi(journal,event):
                 var8 += 1
                 var2 += 1
   num = (var1*var2) - (var3*var4)
-  den = math.sqrt(var5_*var6_*var7*var8)
+  den = math.sqrt(var5*var6*var7*var8)
   phi = num/den
   return phi
 
