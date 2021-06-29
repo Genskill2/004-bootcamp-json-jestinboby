@@ -27,7 +27,7 @@ def compute_phi(journal,event):
             n00 += 1
             n_0 += 1
     num = (n11*n00) - (n10*n01)
-    den = sqrt(n1_*n0_*n_1*n_0)
+    den = math.sqrt(n1_*n0_*n_1*n_0)
     phi = num/den
     return phi
 
