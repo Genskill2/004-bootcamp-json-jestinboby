@@ -8,25 +8,25 @@ def load_journal(journal):
 
 def compute_phi(journal,event):
   data = load_journal(journal)
-  n11 = n00 = n10 = n01 = n1plus = n0plus = nplus1 = nplus0 = 0
+  n11 = n00 = n10 = n01 = n1_ = n0_ = n_1 = n_0 = 0
   for i in data:
     if i['squirrel'] == True:
-        n1plus += 1
+        n1_ += 1
         if(event in i['events']):
             n11 += 1
-            nplus1 += 1
+            n_1 += 1
         else:
-            nplus0 += 1
+            n_0 += 1
             n10 += 1
     else:
-        n0plus += 1
+        n0_ += 1
         if event in i['events']:
             n01 += 1
-            nplus1 += 1
+            n_1 += 1
         else:
             n00 += 1
-            nplus0 += 1
-    phi = (n11*n00 - n10*n01)/math.sqrt(n1plus*n0plus*nplus1*nplus0)
+            n_0 += 1
+    phi = (n11*n00 - n10*n01)/math.sqrt(n1_*n0_*n_1*n_0)
     return phi
 
 def compute_correlations(journal):
