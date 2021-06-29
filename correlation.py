@@ -16,7 +16,7 @@ def compute_phi(journal,event):
   n0_ = 0
   n_1 = 0
   n_0 = 0
- for i in data:
+  for i in data:
     if i['squirrel'] == True:
         n1_ += 1
         if(event in i['events']):
