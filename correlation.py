@@ -26,7 +26,9 @@ def compute_phi(journal,event):
         else:
             n00 += 1
             n_0 += 1
-    phi = (n11*n00 - n10*n01)/math.sqrt(n1_*n0_*n_1*n_0)
+    num = (n11*n00) - (n10*n01)
+    den = sqrt(n1_*n0_*n_1*n_0)
+    phi = num/den
     return phi
 
 def compute_correlations(journal):
