@@ -1,12 +1,12 @@
 import json
 import math
 
-def load_journal(filename):
- with open('filename') as f:
-  data = json.load(f)
+def load_journal(journal):
+ f = open(journal)
+ data = json.load(f)
  return data
 
-def compute_phi(filename,event):
+def compute_phi(journal,event):
   data = load_journal(journal)
   n11 = n00 = n10 = n01 = n1plus = n0plus = nplus1 = nplus0 = 0
   for i in data:
@@ -29,18 +29,18 @@ def compute_phi(filename,event):
     phi = (n11*n00 - n10*n01)/math.sqrt(n1plus*n0plus*nplus1*nplus0)
     return phi
 
-def compute_correlations(filename):
-  data = load_journal(filename)
+def compute_correlations(journal):
+  data = load_journal(journal)
   corr_dict = {}
   for i in data:
       for j in i['events']:
-         corr_val = compute_phi(filename,j)
+         corr_val = compute_phi(journal,j)
          if j not in corr_dict:
              corr_dict[j]=corr_val
   return corr_val
 
-def diagnose(filename):
-    corr_dict=compute_correlations(filename)
+def diagnose(journal):
+    corr_dict=compute_correlations(journal)
     max = min = 0
     for key,value in corr_dict.items():
         if value >= 0:
